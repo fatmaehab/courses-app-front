@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-md-6">
+
+    <form #f="ngForm" (ngSubmit)="addCourse(f)" >
+      <div class="form-group">
+        <label for="title">Course Title</label>
+        <input type="text" id="title" name="title" #title="ngModel" [(ngModel)]="course.title" class="form-control" required>
+        <div *ngIf="title.invalid && title.touched" class="alert alert-danger">
+          <div *ngIf="title.errors.required">Course Title value is required</div>
+        </div>
+      </div>
+
+      <div class="form-group">
+          <label for="duration">Course Duration</label>
+          <input type="number" id="duration" name="duration" #duration="ngModel" [(ngModel)]="course.duration" class="form-control" required [min]="1">
+          <div *ngIf="duration.invalid && duration.touched" class="alert alert-danger">
+              <div *ngIf="duration.errors.required">Duration value is required</div>
+              <div *ngIf="duration.errors.min">Duration value must be greater than  {{duration.errors.min.requiredValue}}</div>
+          </div>
+      </div>
+      <button [disabled]="f.invalid" class="btn btn-primary">Submit</button>
+    </form>
+
+  </div>
+</div>

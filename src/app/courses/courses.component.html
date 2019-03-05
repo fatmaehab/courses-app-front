@@ -1,0 +1,30 @@
+<h1>Courses</h1>
+<table class="table">
+  <thead>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Duration</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let course of courses">
+      <td>{{course.id}}</td>
+      <td>
+        <a [routerLink]="['/courses/course-details', course.id]"></a>
+        {{course.title}}
+      </td>
+      <td>
+        {{course.duration}} weeks
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="deleteCourse(course.id)"> Delete</button>
+        <!-- <a [routerLink]="['/admin/order-details',order.payload.key]">View</a> -->
+      </td>
+      <td>
+        <a [routerLink]="['/courses/enroll', course.id]"> Enroll</a>
+        <!-- <a [routerLink]="['/admin/order-details',order.payload.key]">View</a> -->
+      </td>
+    </tr>
+  </tbody>
+</table>
+<a routerLink="/courses/course-details" class="btn btn-primary" >Add Course</a>
