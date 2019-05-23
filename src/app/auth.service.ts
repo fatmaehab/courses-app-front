@@ -3,6 +3,7 @@ import { HttpClient, HttpResponse, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { JwtResponse } from './auth/jwt-response';
 import { TokenStorageService } from './auth/token-storage.service';
+import { environment } from 'src/environments/environment';
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -15,7 +16,7 @@ export class AuthService {
 
   constructor(private http: HttpClient, private tokenService: TokenStorageService) { }
 
-  private baseUrl = 'http://localhost:8080/users';
+  private baseUrl = environment.backendUrl + '/users';
 
 
   signUp(user): any {
